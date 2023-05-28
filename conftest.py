@@ -10,3 +10,4 @@ def driver():
     driver.set_window_size(1200, 1500)
     yield driver
     driver.quit()
+
