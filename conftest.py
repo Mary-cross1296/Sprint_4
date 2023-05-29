@@ -1,6 +1,8 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+from pages.main_page import MainPageScooter
+from pages.order_page import OrderPageScooter
+from auth_helper import User
 
 @pytest.fixture
 def driver():
@@ -10,3 +12,17 @@ def driver():
     yield driver
     driver.quit()
 
+@pytest.fixture
+def main_page(driver):
+    mp = MainPageScooter(driver)
+    return mp
+
+@pytest.fixture
+def order_page(driver):
+    op = OrderPageScooter(driver)
+    return op
+
+@pytest.fixture
+def new_user():
+    nu = User()
+    return nu

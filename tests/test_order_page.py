@@ -1,9 +1,58 @@
-import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-from order_page import OrderPageScooter
+class TestOrderPage:
 
+    def test_logo_scoooter(self, driver, order_page):
+        driver.get('https://qa-scooter.praktikum-services.ru/')
+        order_page.wait_button_order_up()
+        order_page.click_button_order_up()
+        order_page.click_logo_scooter()
+        assert order_page.get_page_url() == 'https://qa-scooter.praktikum-services.ru/'
 
+    def test_button_order_up(self, driver, order_page):
+        driver.get('https://qa-scooter.praktikum-services.ru/')
+        order_page.wait_button_order_up()
+        order_page.click_button_order_up()
+        order_page.wait_title_order_page()
+        assert order_page.get_page_url() == 'https://qa-scooter.praktikum-services.ru/order'
 
+    def test_button_order_middle(self, driver, order_page):
+        driver.get('https://qa-scooter.praktikum-services.ru/')
+        order_page.scroll_end_main_page()
+        order_page.wait_button_order_middle()
+        order_page.click_button_order_middle()
+        order_page.wait_title_order_page()
+        assert order_page.get_page_url() == 'https://qa-scooter.praktikum-services.ru/order'
+
+    def test_make_order_with_comment_and_color1(self, driver, order_page, new_user):
+        driver.get('https://qa-scooter.praktikum-services.ru/')
+        order_page.wait_button_order_up()
+        order_page.click_button_order_up()
+        order_page.wait_title_order_page()
+        order_page.enter_name(new_user.name)
+        order_page.enter_last_name(new_user.last_name)
+        order_page.enter_address_name(new_user.address)
+        order_page.enter_metro_station()
+        order_page.enter_phone_number(new_user.phone)
+        order_page.continue_make_order()
+        order_page.enter_delivery_date(new_user.delivery_date_rand)
+        order_page.enter_rental_period()
+        order_page.choose_color1_scooter()
+        order_page.enter_comment_courier(new_user.comment)
+        order_page.click_make_order()
+        assert order_page.confirmation_order() == "Отменить заказ"
+
+    def test_make_order_no_comment_and_color2(self, driver, order_page, new_user):
+        driver.get('https://qa-scooter.praktikum-services.ru/')
+        order_page.wait_button_order_up()
+        order_page.click_button_order_up()
+        order_page.wait_title_order_page()
+        order_page.enter_name(new_user.name)
+        order_page.enter_last_name(new_user.last_name)
+        order_page.enter_address_name(new_user.address)
+        order_page.enter_metro_station()
+        order_page.enter_phone_number(new_user.phone)
+        order_page.continue_make_order()
+        order_page.enter_delivery_date(new_user.delivery_date_rand)
+        order_page.enter_rental_period()
+        order_page.choose_color2_scooter()
+        order_page.click_make_order()
+        assert order_page.confirmation_order() == "Отменить заказ"
