@@ -26,7 +26,7 @@ class TestOrderPage:
         order_page.wait_title_order_page()
         assert order_page.get_page_url() == 'https://qa-scooter.praktikum-services.ru/order'
 
-    @allure.title('Проверка оформления заказа (с комментараем для курьера цвет самоката - черный)')
+    @allure.title('Проверка оформления заказа (с комментараем для курьера, цвет самоката - черный)')
     def test_make_order_with_comment_and_color1(self, driver, order_page, new_user):
         driver.get('https://qa-scooter.praktikum-services.ru/')
         order_page.wait_button_order_up()
@@ -45,7 +45,7 @@ class TestOrderPage:
         order_page.click_make_order()
         assert order_page.confirmation_order() == "Отменить заказ"
 
-    @allure.title('Проверка оформления заказа (без комментария для курьера цвет самоката - серый)')
+    @allure.title('Проверка оформления заказа (без комментария для курьера, цвет самоката - серый)')
     def test_make_order_no_comment_and_color2(self, driver, order_page, new_user):
         driver.get('https://qa-scooter.praktikum-services.ru/')
         order_page.scroll_end_main_page()
