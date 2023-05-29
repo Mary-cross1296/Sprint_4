@@ -1,4 +1,5 @@
 import allure
+
 class TestOrderPage:
 
     @allure.title('Проверка перехода по логотипу "Самокат"')
