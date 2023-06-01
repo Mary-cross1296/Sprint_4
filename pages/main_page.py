@@ -4,8 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class MainPageScooter:
 
-    title_questions_important = [By.XPATH,
-                                 './/div[@class = "Home_FourPart__1uthg"]/div[@class = "Home_SubHeader__zwi_E"]']
+    title_questions_important = [By.XPATH, './/div[text() = "Вопросы о важном"]']
     logo_yandex = [By.XPATH, './/div/a[@class ="Header_LogoYandex__3TSOI"]']
     page_yandex = [By.XPATH, './/button[text() ="Найти"]']
 
