@@ -4,12 +4,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class MainPageScooter:
 
+    def __init__(self, driver):
+        self.driver = driver
+
     title_questions_important = [By.XPATH, './/div[text() = "Вопросы о важном"]']
     logo_yandex = [By.XPATH, './/div/a[@class ="Header_LogoYandex__3TSOI"]']
     page_yandex = [By.XPATH, './/button[text() ="Найти"]']
-
-    def __init__(self, driver):
-        self.driver = driver
 
     def scroll_end_main_page(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")

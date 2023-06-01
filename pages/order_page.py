@@ -5,6 +5,9 @@ from auth_helper import User
 
 class OrderPageScooter:
 
+    def __init__(self, driver):
+        self.driver = driver
+
     button_order_up = [By.CLASS_NAME, 'Button_Button__ra12g']
     button_order_middle = [By.XPATH, './/button[@class = "Button_Button__ra12g Button_Middle__1CSJM"]']
     title_order_page = [By.CLASS_NAME, 'Order_Header__BZXOb']
@@ -28,9 +31,6 @@ class OrderPageScooter:
     button_checkout_status = [By.XPATH, './/button[text() = "Посмотреть статус"]']
     button_cancel_order = [By.XPATH, './/button[text() = "Отменить заказ"]']
     logo_scooter = [By.XPATH, './/img[@alt ="Scooter"]']
-
-    def __init__(self, driver):
-        self.driver = driver
 
     def scroll_end_main_page(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
