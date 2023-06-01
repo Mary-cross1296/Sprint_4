@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 from pages.main_page import MainPageScooter
 from pages.order_page import OrderPageScooter
-from auth_helper import User
+from urls import Urls
 
 @pytest.fixture
 def driver():
@@ -26,3 +26,8 @@ def order_page(driver):
 def new_user():
     nu = User()
     return nu
+
+@pytest.fixture
+def url():
+    url_page = Urls()
+    return url_page

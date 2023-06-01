@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 class TestMainPage:
 
     @allure.title('Проверка наличия раздела "Вопросы о важном"')
-    def test_section_questions(self, driver, main_page):
-        driver.get('https://qa-scooter.praktikum-services.ru/')
+    def test_section_questions(self, driver, main_page, url):
+        driver.get(url.main_page_url)
         main_page.scroll_end_main_page()
         main_page.wait_load_questions_important()
         title = main_page.get_title_questions_important()
@@ -27,14 +27,14 @@ class TestMainPage:
     )
 
     @allure.title('Проверка ответов на вопросы в разделе "Вопросы о важном"')
-    def test_get_answer_to_question(self, driver, main_page, question, answer, expected_result):
-        driver.get('https://qa-scooter.praktikum-services.ru/')
+    def test_get_answer_to_question(self, driver, main_page, question, answer, expected_result, url):
+        driver.get(url.main_page_url)
         main_page.scroll_end_main_page()
         answer_var = main_page.get_answer_to_question(question, answer)
         assert answer_var == expected_result
 
     @allure.title('Проверка перехода по логотипу Яндекса')
-    def test_click_logo_yandex(self, driver, main_page):
-        driver.get('https://qa-scooter.praktikum-services.ru/')
+    def test_click_logo_yandex(self, driver, main_page, url):
+        driver.get(url.main_page_url)
         main_page.click_logo_yandex()
         assert main_page.get_url_main_page() == "https://dzen.ru/?yredirect=true"

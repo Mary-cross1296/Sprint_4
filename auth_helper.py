@@ -10,3 +10,5 @@ class User:
     phone = random.randint(10000000000, 99999999999)
     delivery_date_rand = str(random.randint(1, 30)) + '.' + str(random.randint(6, 12)) + '.' + '2023'
     comment = str(fake_ru.text())
+
+
