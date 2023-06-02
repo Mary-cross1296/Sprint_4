@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+
+from auth_helper import User
 from pages.main_page import MainPageScooter
 from pages.order_page import OrderPageScooter
 from urls import Urls
@@ -31,3 +33,8 @@ def new_user():
 def url():
     url_page = Urls()
     return url_page
+
+#@pytest.fixture
+#def base_page(driver):
+   #bp = BasePage(driver)
+    #return bp

@@ -1,9 +1,11 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from pages.base_page import BasePage
 from auth_helper import User
 
-class OrderPageScooter:
+
+class OrderPageScooter(BasePage):
 
     def __init__(self, driver):
         self.driver = driver
@@ -32,17 +34,17 @@ class OrderPageScooter:
     button_cancel_order = [By.XPATH, './/button[text() = "Отменить заказ"]']
     logo_scooter = [By.XPATH, './/img[@alt ="Scooter"]']
 
-    def scroll_end_main_page(self):
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    #def scroll_end_main_page(self):
+        #self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
     def wait_button_order_up(self):
         WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable((self.button_order_up)))
 
-    def wait_button_order_middle(self):
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located((self.button_order_middle)))
+    #def wait_button_order_middle(self):
+        #WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located((self.button_order_middle)))
 
-    def wait_title_order_page(self):
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located((self.title_order_page)))
+    #def wait_title_order_page(self):
+        #WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located((self.title_order_page)))
 
     def click_button_order_up(self):
         self.driver.find_element(*self.button_order_up).click()

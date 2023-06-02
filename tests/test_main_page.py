@@ -7,8 +7,8 @@ class TestMainPage:
     @allure.title('Проверка наличия раздела "Вопросы о важном"')
     def test_section_questions(self, driver, main_page, url):
         driver.get(url.main_page_url)
-        main_page.scroll_end_main_page()
-        main_page.wait_load_questions_important()
+        main_page.scroll_end_page()
+        main_page.wait_load_any_element(locator=main_page.title_questions_important)
         title = main_page.get_title_questions_important()
         assert title == 'Вопросы о важном'
 
@@ -29,7 +29,7 @@ class TestMainPage:
     @allure.title('Проверка ответов на вопросы в разделе "Вопросы о важном"')
     def test_get_answer_to_question(self, driver, main_page, question, answer, expected_result, url):
         driver.get(url.main_page_url)
-        main_page.scroll_end_main_page()
+        main_page.scroll_end_page()
         answer_var = main_page.get_answer_to_question(question, answer)
         assert answer_var == expected_result
 
