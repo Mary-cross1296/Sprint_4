@@ -4,6 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 class BasePage:
 
     title_questions_important = [By.XPATH, './/div[text() = "Вопросы о важном"]']
+    title_order_page = [By.XPATH, './/div[text()="Для кого самокат"]']
 
     def __init__(self, driver):
         self.driver = driver

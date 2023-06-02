@@ -23,7 +23,6 @@ class OrderPageScooter(BasePage):
     date_in_calendar = [By.XPATH, './/div[@tabindex = "0"]']
     rental_period = [By.XPATH, './/span[@class = "Dropdown-arrow"]']
     days_5 = [By.XPATH, './/div[@class = "Dropdown-menu"]/div[text() ="пятеро суток"]']
-    #open_area = [By.XPATH, './/div[@class = "Header_Header__214zg"]']
     black_color = [By.ID, 'black']
     grey_color = [By.ID, 'grey']
     comment_courier = [By.XPATH, './/input[@placeholder = "Комментарий для курьера"]']
@@ -32,28 +31,12 @@ class OrderPageScooter(BasePage):
     button_checkout_status = [By.XPATH, './/button[text() = "Посмотреть статус"]']
     button_cancel_order = [By.XPATH, './/button[text() = "Отменить заказ"]']
     logo_scooter = [By.XPATH, './/img[@alt ="Scooter"]']
-    title_order_page = [By.XPATH, './/div[text()="Для кого самокат"]']
-
-    #def scroll_end_main_page(self):
-        #self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
-    #def wait_button_order_up(self):
-        #WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable((self.button_order_up)))
-
-    #def wait_button_order_middle(self):
-        #WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located((self.button_order_middle)))
-
-    #def wait_title_order_page(self):
-        #WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located((self.title_order_page)))
 
     def click_button_order_up(self):
         self.driver.find_element(*self.button_order_up).click()
 
     def click_button_order_middle(self):
         self.driver.find_element(*self.button_order_middle).click()
-
-    #def get_page_url(self):
-        #return self.driver.current_url
 
     def go_order_section_up(self):
         self.wait_load_any_element(locator=self.button_order_up)
@@ -126,7 +109,6 @@ class OrderPageScooter(BasePage):
         self.wait_load_any_element(locator=self.button_checkout_status)
         self.driver.find_element(*self.button_checkout_status).click()
         self.wait_load_any_element(locator=self.button_cancel_order)
-        #return self.driver.find_element(*self.button_cancel_order).text
         return self.get_text_any_element(locator=self.button_cancel_order)
 
     def click_logo_scooter(self):
