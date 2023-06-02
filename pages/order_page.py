@@ -33,12 +33,13 @@ class OrderPageScooter(BasePage):
     button_checkout_status = [By.XPATH, './/button[text() = "Посмотреть статус"]']
     button_cancel_order = [By.XPATH, './/button[text() = "Отменить заказ"]']
     logo_scooter = [By.XPATH, './/img[@alt ="Scooter"]']
+    title_order_page = [By.XPATH, './/div[text()="Для кого самокат"]']
 
     #def scroll_end_main_page(self):
         #self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    def wait_button_order_up(self):
-        WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable((self.button_order_up)))
+    #def wait_button_order_up(self):
+        #WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable((self.button_order_up)))
 
     #def wait_button_order_middle(self):
         #WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located((self.button_order_middle)))
@@ -52,8 +53,16 @@ class OrderPageScooter(BasePage):
     def click_button_order_middle(self):
         self.driver.find_element(*self.button_order_middle).click()
 
-    def get_page_url(self):
-        return self.driver.current_url
+    #def get_page_url(self):
+        #return self.driver.current_url
+
+    def go_order_section_up(self):
+        self.wait_load_any_element(locator=self.button_order_up)
+        self.click_button_order_up()
+
+    def go_order_section_middle(self):
+        self.wait_load_any_element(locator=self.button_order_middle)
+        self.click_button_order_middle()
 
     def enter_name(self, user_name):
         self.driver.find_element(*self.name).send_keys(user_name)
@@ -70,6 +79,13 @@ class OrderPageScooter(BasePage):
 
     def enter_phone_number(self,user_phone_number):
         self.driver.find_element(*self.phone_number).send_keys(user_phone_number)
+
+    def data_filling_part_1(self, user_name, user_last_name, user_address, user_phone_number):
+        self.enter_name(user_name)
+        self.enter_last_name(user_last_name)
+        self.enter_address_name(user_address)
+        self.enter_metro_station()
+        self.enter_phone_number(user_phone_number)
 
     def continue_make_order(self):
         self.driver.find_element(*self.button_next).click()
@@ -91,13 +107,28 @@ class OrderPageScooter(BasePage):
     def enter_comment_courier(self, user_comment):
         self.driver.find_element(*self.comment_courier).send_keys(user_comment)
 
+    def data_filling_part_2_1(self, user_delivery_date, user_comment):
+        self.enter_delivery_date(user_delivery_date)
+        self.enter_rental_period()
+        self.choose_color1_scooter()
+        self.enter_comment_courier(user_comment)
+
+    def data_filling_part_2_2(self, user_delivery_date):
+        self.enter_delivery_date(user_delivery_date)
+        self.enter_rental_period()
+        self.choose_color1_scooter()
+
     def click_make_order(self):
         self.driver.find_element(*self.button_order).click()
 
     def confirmation_order(self):
+        self.wait_load_any_element(locator=self.button_checkout_order_yes)
         self.driver.find_element(*self.button_checkout_order_yes).click()
+        self.wait_load_any_element(locator=self.button_checkout_status)
         self.driver.find_element(*self.button_checkout_status).click()
-        return self.driver.find_element(*self.button_cancel_order).text
+        self.wait_load_any_element(locator=self.button_cancel_order)
+        #return self.driver.find_element(*self.button_cancel_order).text
+        return self.get_text_any_element(locator=self.button_cancel_order)
 
     def click_logo_scooter(self):
         WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located

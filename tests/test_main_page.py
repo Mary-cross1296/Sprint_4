@@ -9,7 +9,7 @@ class TestMainPage:
         driver.get(url.main_page_url)
         main_page.scroll_end_page()
         main_page.wait_load_any_element(locator=main_page.title_questions_important)
-        title = main_page.get_title_questions_important()
+        title = main_page.get_text_any_element(locator=main_page.title_questions_important)
         assert title == 'Вопросы о важном'
 
     @pytest.mark.parametrize(
@@ -37,4 +37,5 @@ class TestMainPage:
     def test_click_logo_yandex(self, driver, main_page, url):
         driver.get(url.main_page_url)
         main_page.click_logo_yandex()
-        assert main_page.get_url_main_page() == url.yandex_page_url
+        #assert main_page.get == url.yandex_page_url
+        assert main_page.get_page_url() == url.yandex_page_url

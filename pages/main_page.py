@@ -9,7 +9,7 @@ class MainPageScooter(BasePage):
     def __init__(self, driver):
         self.driver = driver
 
-    title_questions_important = [By.XPATH, './/div[text() = "Вопросы о важном"]']
+    #title_questions_important = [By.XPATH, './/div[text() = "Вопросы о важном"]']
     logo_yandex = [By.XPATH, './/a/img[@alt="Yandex"]//ancestor::a']
     page_yandex = [By.XPATH, './/button[text() ="Найти"]']
 
@@ -20,8 +20,8 @@ class MainPageScooter(BasePage):
         #WebDriverWait(self.driver,3).until(expected_conditions.visibility_of_element_located
                                            #((self.title_questions_important)))
 
-    def get_title_questions_important(self):
-        return self.driver.find_element(*self.title_questions_important).text
+    #def get_title_questions_important(self):
+        #return self.driver.find_element(*self.title_questions_important).text
 
     def get_answer_to_question(self, question, answer):
         #WebDriverWait(self.driver,3).until(expected_conditions.visibility_of_element_located((question)))
@@ -42,5 +42,5 @@ class MainPageScooter(BasePage):
                                             #((self.page_yandex)))
         self.wait_load_any_element(locator=self.page_yandex)
 
-    def get_url_main_page(self):
-        return self.driver.current_url
+    #def get_url_main_page(self):
+        #return self.driver.current_url
