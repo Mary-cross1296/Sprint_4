@@ -10,7 +10,7 @@ class MainPageScooter(BasePage):
         self.driver = driver
 
     #title_questions_important = [By.XPATH, './/div[text() = "Вопросы о важном"]']
-    logo_yandex = [By.XPATH, './/a/img[@alt="Yandex"]//ancestor::a']
+    logo_yandex = [By.XPATH, './/img[@alt = "Yandex"]//ancestor::a']
     page_yandex = [By.XPATH, './/button[text() ="Найти"]']
 
     #def scroll_end_main_page(self):

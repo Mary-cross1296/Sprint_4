@@ -33,8 +33,3 @@ def new_user():
 def url():
     url_page = Urls()
     return url_page
-
-#@pytest.fixture
-#def base_page(driver):
-   #bp = BasePage(driver)
-    #return bp

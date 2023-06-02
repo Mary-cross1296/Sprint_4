@@ -4,7 +4,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from pages.base_page import BasePage
 from auth_helper import User
 
-
 class OrderPageScooter(BasePage):
 
     def __init__(self, driver):
