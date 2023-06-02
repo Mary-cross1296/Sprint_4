@@ -10,7 +10,7 @@ class MainPageScooter(BasePage):
         self.driver = driver
 
     title_questions_important = [By.XPATH, './/div[text() = "Вопросы о важном"]']
-    logo_yandex = [By.XPATH, './/div/a[@class ="Header_LogoYandex__3TSOI"]']
+    logo_yandex = [By.XPATH, './/a/img[@alt="Yandex"]//ancestor::a']
     page_yandex = [By.XPATH, './/button[text() ="Найти"]']
 
     #def scroll_end_main_page(self):
@@ -40,7 +40,7 @@ class MainPageScooter(BasePage):
         self.switch_to_windows()
         #WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located
                                             #((self.page_yandex)))
-        self.wait_load_any_element(locator=self.logo_yandex)
+        self.wait_load_any_element(locator=self.page_yandex)
 
     def get_url_main_page(self):
         return self.driver.current_url
