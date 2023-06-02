@@ -11,7 +11,7 @@ class TestOrderPage:
         order_page.scroll_end_page()
         assert order_page.get_text_any_element(locator=order_page.title_questions_important)
 
-    @allure.title('Проверка перехода по кнопке "Заказать" вверху сраницы')
+    @allure.title('Проверка перехода по кнопке "Заказать" вверху страницы')
     def test_button_order_up(self, driver, order_page, url):
         driver.get(url.main_page_url)
         order_page.go_order_section_up()
