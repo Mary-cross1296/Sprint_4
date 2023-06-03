@@ -1,4 +1,5 @@
 import pytest
+import allure
 from selenium import webdriver
 
 from auth_helper import User
